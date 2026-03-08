@@ -1,3 +1,4 @@
 <Solution>
+  <Project Path="DotnetWebApi.Api.Tests/DotnetWebApi.Api.Tests.csproj" Id="0684a363-21a1-44dd-bbdb-ea8eb48df9f2" />
   <Project Path="DotnetWebApi.Api/DotnetWebApi.Api.csproj" />
 </Solution>
