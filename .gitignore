@@ -1,0 +1,42 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Rider
+*.sln.iml
+
+# .NET build outputs
+**/bin/
+**/obj/
+**/out/
+**/TestResults/
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+
+# Logs
+*.log
+logs/
+
+# Local environment files
+.env
+.env.*
+
+# Coverage
+coverage/
+*.coverage
+*.coveragexml
+
+# Docker local override files
+docker-compose.override.yml

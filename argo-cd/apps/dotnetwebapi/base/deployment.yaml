@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dotnetwebapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dotnetwebapi
+  template:
+    metadata:
+      labels:
+        app: dotnetwebapi
+    spec:
+      containers:
+      - name: dotnetwebapi
+        image: dotnetwebapi-api:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        env:
+        - name: ASPNETCORE_URLS
+          value: http://+:8080
+        readinessProbe:
+          httpGet:
+            path: /weatherforecast
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /weatherforecast
+            port: 8080
+          initialDelaySeconds: 20
+          periodSeconds: 20

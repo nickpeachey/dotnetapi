@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: dotnetwebapi
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: REPLACE_WITH_REPO_URL
+    targetRevision: main
+    path: argo-cd/apps/dotnetwebapi/overlays/local
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: dotnetwebapi
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
