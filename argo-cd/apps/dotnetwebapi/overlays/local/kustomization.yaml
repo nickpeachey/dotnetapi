@@ -8,4 +8,4 @@ resources:
 images:
 - name: dotnetwebapi-api
   newName: ghcr.io/nickpeachey/dotnetwebapi-api
-  newTag: b04e9621439e
+  newTag: da62193cc9d0
