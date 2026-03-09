@@ -2,11 +2,11 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: dotnetwebapi
 resources:
-- ../../base
-- namespace.yaml
-- ingress.yaml
-- configmap.yaml
+  - ../../base
+  - namespace.yaml
+  - ingress.yaml
+  - configmap.yaml
 images:
-- name: dotnetwebapi-api
-  newName: ghcr.io/nickpeachey/dotnetwebapi-api
-  newTag: 8377f95d8ae0
+  - name: dotnetwebapi-api
+    newName: ghcr.io/nickpeachey/dotnetwebapi-api
+    newTag: 8377f95d8ae0
