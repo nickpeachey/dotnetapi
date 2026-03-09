@@ -5,6 +5,7 @@ resources:
 - ../../base
 - namespace.yaml
 - ingress.yaml
+- configmap.yaml
 images:
 - name: dotnetwebapi-api
   newName: ghcr.io/nickpeachey/dotnetwebapi-api

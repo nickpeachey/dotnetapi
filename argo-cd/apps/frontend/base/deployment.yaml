@@ -18,6 +18,9 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
+          envFrom:
+            - configMapRef:
+                name: frontend-config
           readinessProbe:
             httpGet:
               path: /

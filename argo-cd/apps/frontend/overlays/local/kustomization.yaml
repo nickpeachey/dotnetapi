@@ -5,6 +5,7 @@ resources:
   - ../../base
   - namespace.yaml
   - ingress.yaml
+  - configmap.yaml
 images:
   - name: frontend
     newName: ghcr.io/nickpeachey/frontend
