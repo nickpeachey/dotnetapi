@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/nickpeachey/dotnetapi
+    repoURL: https://github.com/nickpeachey/argo-cd-github
     targetRevision: main
     path: argo-cd/apps/dotnetwebapi/overlays/local
   destination:

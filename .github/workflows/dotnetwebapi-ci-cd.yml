@@ -14,7 +14,7 @@ env:
   IMAGE_NAME: ${{ github.repository_owner }}/dotnetwebapi-api
 
 permissions:
-  contents: write
+  contents: read
   packages: write
 
 jobs:
@@ -71,6 +71,13 @@ jobs:
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.vars.outputs.image_tag }}
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
 
+      - name: Checkout argo-cd-github repo
+        uses: actions/checkout@v4
+        with:
+          repository: nickpeachey/argo-cd-github
+          token: ${{ secrets.ARGOCD_REPO_TOKEN }}
+          path: argo-cd-github
+
       - name: Setup Kustomize
         uses: imranismail/setup-kustomize@v2
         with:
@@ -78,11 +85,12 @@ jobs:
 
       - name: Update overlay image tag
         run: |
-          cd argo-cd/apps/dotnetwebapi/overlays/local
+          cd argo-cd-github/argo-cd/apps/dotnetwebapi/overlays/local
           kustomize edit set image dotnetwebapi-api=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.vars.outputs.image_tag }}
 
-      - name: Commit kustomization update
+      - name: Commit and push kustomization update
         run: |
+          cd argo-cd-github
           if git diff --quiet -- argo-cd/apps/dotnetwebapi/overlays/local/kustomization.yaml; then
             echo "No kustomization changes to commit"
             exit 0
